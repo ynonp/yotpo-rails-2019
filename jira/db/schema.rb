@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2019_05_15_080654) do
   create_table "bugs", force: :cascade do |t|
     t.integer "user_id"
     t.text "description"
-    t.integer "priority"
-    t.string "color"
+    t.integer "priority", default: 5
+    t.string "color", default: "red"
     t.string "title"
     t.datetime "due_date"
     t.datetime "created_at", null: false

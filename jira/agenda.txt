@@ -1,0 +1,98 @@
+rails new feeder --webpack=react --skip-turbolinks
+
+--- Setup
+
+√. Install devise and create a user model
+  * rails generate devise:install
+  * rails generate devise User
+
+√. Create a Post model:
+  ./bin/rails g scaffold post user:references text:text color:string
+
+√. Allow users to create Post-s
+  * modify posts_controller to authenticate user and merge current user
+  * remove "user" from post form
+  * change "color" to color input
+
+--- Webpacker
+
+√. Create a Post React component
+
+√. Create a Feed React component which shows a list of Posts
+
+√. Pass data from Rails -> Webpack
+  * using a content_tag with data attribute
+
+*. Install pry
+  gem 'pry', '~> 0.12.2'
+  gem 'pry-byebug'
+
+√. Pass routes from Rails -> Webpack:
+  https://github.com/railsware/js-routes
+
+
+√. Add "from" to query
+
+√. Verify new messages are only shown after reload
+
+Lab: Add "header" to each post
+
+--- Add Action Cable
+√ 9. Setup the connection
+  * https://guides.rubyonrails.org/action_cable_overview.html
+  * in ApplicationController make sure to add the new cookie
+
+√ 10. Create the channel
+  * ./bin/rails g channel  Feed  --no-assets
+
+√ 11. Broadcast notification to the channel when new post is created
+
+√ 12. Setup actioncable client side with:
+  * yarn add actioncable
+
+√ 13. broadcast from Controller to Channel
+  * ActionCable.server.broadcast('feed', posts_for_feed)
+
+√ 14. Create the cable in JS:
+  * window.Cable = ActionCable.createConsumer();
+
+√ 15. Create subscription in JS:
+  * Cable.subscriptions.create("FeedChannel", { received(data) {} });
+
+√ 16. Unsubscribe with:
+  * Cable.subscriptions.remove(App.room);
+
+Lab: Add notification when ANY user signs in
+
+--- Tests
+
+1. Write a demo system test with Capybara to see the integration in action
+
+2. Setup capybara + devise helpers
+  * Add to appication system test the include:
+    include Warden::Test::Helpers
+
+  * Use login_as users(:one) to login
+
+2. Write a test with multiple sessions to allow one user to post a message and verify the other
+   sees it immediately:
+   http://blog.bruzilla.com/2012/04/10/using-multiple-capybara-sessions-in-rspec-request.html
+
+Lab: Write a test to verify user list works
+
+
+
+--- Add attached PDFs to each post with Active Storage
+
+1. Create the Active Storage services
+
+2. Modify model to allow attached PDF files
+
+3. Use https://github.com/igorkasyanchuk/active_storage_validations to add validations
+
+4. Add "Attach Files" input fields in Post view
+
+5. Add options to preview/download the files
+
+Lab: Add an image to each post
+

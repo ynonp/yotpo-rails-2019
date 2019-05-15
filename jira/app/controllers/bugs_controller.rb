@@ -15,6 +15,7 @@ class BugsController < ApplicationController
   # GET /bugs/new
   def new
     @bug = Bug.new
+    @appstate[:bug] = Bug.new
   end
 
   # GET /bugs/1/edit
@@ -41,7 +42,7 @@ class BugsController < ApplicationController
   # PATCH/PUT /bugs/1.json
   def update
     respond_to do |format|
-      if @bug.update(bug_params)
+      if @bug.update(bug_params_for_edit)
         format.html { redirect_to @bug, notice: 'Bug was successfully updated.' }
         format.json { render :show, status: :ok, location: @bug }
       else
@@ -69,6 +70,15 @@ class BugsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bug_params
-      params.require(:bug).permit(:user_id, :description, :priority, :color, :title, :due_date)
+      params
+          .require(:bug)
+          .permit(:description, :priority, :color, :title, :due_date)
+          .merge(user_id: current_user.id)
     end
+
+  def bug_params_for_edit
+    params
+        .require(:bug)
+        .permit(:description, :priority, :color, :title, :due_date)
+  end
 end
