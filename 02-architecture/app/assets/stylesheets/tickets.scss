@@ -1,0 +1,35 @@
+// Place all the styles related to the tickets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.alert {
+  color: red;
+}
+
+.filter-1 {
+  display: inline-block;
+  font-size: 18px;
+
+  a {
+    margin: 0 10px;
+  }
+
+  .button_to {
+    display: inline-block;
+  }
+}
+
+.tagcloud {
+  display: inline;
+  background: #c0c0c0;
+  list-style: none;
+  padding: 10px;
+  li {
+    display: inline-block;
+    margin: 10px;
+    a {
+      color: #222;
+
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <% if @ticket.user %>
+    <%= @ticket.user.email %>
+  <% else %>
+    Guest User
+  <% end %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @ticket.priority %>
+</p>
+
+<p>
+  <strong>Header:</strong>
+  <%= @ticket.header %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @ticket.text %>
+</p>
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>
