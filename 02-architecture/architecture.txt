@@ -1,0 +1,41 @@
+√ 1. Null object (for guest user)
+  (in tickets_controller#index: create a guest user and remove the if)
+
+√ 2. Move view logic to View Helper
+  (in tickets/index.html.erb: move the logic to a view helper)
+
+√ 11. Move model logic to concerns
+  - split logic by domains
+  - (example: Searchable domain which includes the finder methods by things to search by)
+
+√ 3. Move logic that involves multiple models to Action
+  - (example: Create a report of all open tickets by tags to Excel spreadsheet)
+
+√ 5. Move logic to initialiser / static files
+
+√ 12. Move view logic to Presenter
+
+√ 6. Move controller logic rack middleware
+  Example: maintenance mode
+
+√ 9. Move controller logic to normal ruby class (Ability)
+
+√ 13. Move instance variables from controller to Presenter
+
+√ 4. Change controller inheritance to concerns
+
+√ 14. Move validation logic from controller to model
+
+√ 10. Validation classes
+
+---
+Guidelines
+
+
+1. Methods < 5 lines
+
+2. Classes < 100 lines
+
+3. One instance variable in views
+
+
