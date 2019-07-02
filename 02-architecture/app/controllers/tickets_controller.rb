@@ -9,11 +9,7 @@ class TicketsController < ApplicationController
     @counts = Tag.all.joins(:tickets).group('tags.id').count
 
     if params[:user]
-      if params[:user].to_i == -1
-        @tickets = @tickets.where(user_id: nil)
-      else
-        @tickets = @tickets.where(user_id: params[:user])
-      end
+      @tickets = current_user.tickets
     end
 
     if params[:tag]
