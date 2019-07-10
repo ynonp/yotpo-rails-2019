@@ -14,7 +14,6 @@
 <div>
   <ul class="tagcloud">
     <li><%= link_to('All', tickets_path) %></li>
-    <%= render @tags %>
     <% @tags.each do |tag| %>
       <li>
         <%= link_to(tag.name, tickets_path(tag: tag.id)) %>
