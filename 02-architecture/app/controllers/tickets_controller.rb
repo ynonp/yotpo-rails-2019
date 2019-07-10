@@ -4,7 +4,7 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.order('CASE WHEN priority IS NULL THEN 1 ELSE 0 END, priority')
+    @tickets = Ticket.order(Arel.sql('CASE WHEN priority IS NULL THEN 1 ELSE 0 END, priority'))
     @tags = Tag.all.joins(:tickets).distinct('tags.id')
     @counts = Tag.all.joins(:tickets).group('tags.id').count
 
