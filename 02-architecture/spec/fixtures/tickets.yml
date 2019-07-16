@@ -1,0 +1,6 @@
+one:
+  priority: 2
+  header: hello
+  text: bye bye
+  user: admin
+

@@ -1,5 +1,5 @@
 class Ticket < ApplicationRecord
-  belongs_to :user, optional: true
+  belongs_to :user, optional: false
   has_many :tag_tickets
   has_many :tags, through: :tag_tickets
   validates :text, presence: true
